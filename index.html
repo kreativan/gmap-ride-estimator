@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Drive Calculator</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.14/css/uikit.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.14/js/uikit.min.js"></script>
+
+    <script defer src="ride-estimator.js"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdoocZLOrthp4QWbIgbNc8p_R-wJLaBnQ&callback=initMap"></script>
+
+    <style>
+        .autocomplete-list {
+            position:absolute;
+            top:45px;
+            z-index:9;
+            background:#fff;
+            list-style:none;
+            margin:0;
+            padding:0;
+            border: 1px solid #ddd;
+            width:100%;
+            box-sizing:border-box;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .autocomplete-list li {
+            font-size: 0.90rem;
+            padding:10px;
+        }
+        .autocomplete-list li a {
+            display:block;
+            color: #444;
+        }
+        .autocomplete-list li span {
+            color: #888;
+        }
+        #route-data > li {
+            display:flex;
+            justify-content: space-between;
+        }
+        #route-data > li > span {
+            display:block;
+            width:100%;
+        }
+        #route-data > li > span + span {
+            text-align: right;
+            font-weight:bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="uk-section">
+        <div class="uk-container uk-container-expand">
+            <div class="uk-grid-small uk-grid-match" uk-grid>
+
+                <div class="uk-width-medium@m">
+                    <div class="uk-panel uk-background-muted uk-padding-small">
+
+                        <div>
+                            <div class="uk-margin">
+                                <select id="city" class="uk-select" nam="city">
+                                    <option value="">- Select City -</option>
+                                    <option value="Beograd">Beograd</option>
+                                    <option value="Novi Sad">Novi Sad</option>
+                                    <option value="Prokuplje">Prokuplje</option>
+                                </select>
+                            </div>
+                            
+                            <div class="uk-margin uk-position-relative">
+                                <input id="start" class="uk-input" type="text" name="polaz" placeholder="Start" value="" />
+                                <ul id="start-dropdown" class="autocomplete-list uk-hidden"></ul>
+                            </div>
+                            
+                            <div class="uk-margin uk-position-relative">
+                                <input id="end" class="uk-input" type="text" name="dolaz" placeholder="Destination" value="" />
+                                <ul id="end-dropdown" class="autocomplete-list uk-hidden"></ul>
+                            </div>
+                        </div>
+
+                        <ul id="route-data" class="uk-list uk-list-divider uk-hidden"></ul>
+
+                    </div>
+                </div>
+
+                <div class="uk-width-expand@m">
+                    <div id="map" style="height:800px;"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

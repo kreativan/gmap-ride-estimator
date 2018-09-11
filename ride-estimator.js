@@ -1,9 +1,3 @@
-/**
- *  Address autocomplete
- *
- */
-
-
 // currency
 const currency = "$";
 // prices
@@ -12,7 +6,6 @@ const prices = {
     'Premium': 19,
     'Lux': 29
 };
-
 
 // narrow search to this city
 const city = document.getElementById('city');
